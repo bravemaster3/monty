@@ -37,14 +37,15 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *top;
+extern stack_t *top = NULL;
+
 void push_fun(int n);
-void pall_fun();
+void pall_fun(void);
 
 char **line_split(char *buff, char *delim);
 int ntok(char **toks);
 void free_2D(char **grd, int n_rows);
-void free_stack();
+void free_stack(void);
 void handler(char **tks, int line_num, FILE *fd, char *buffer);
 
 #endif /* MONTY_H */
