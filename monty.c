@@ -7,7 +7,6 @@
  * Return: 0 on success, -1 on failure
  */
 
-stack_t *top = NULL;
 int main(int argc, char *argv[])
 {
 	FILE *fd;
@@ -40,6 +39,13 @@ int main(int argc, char *argv[])
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * handler - handles the different commands
+ * @tks: tokenized line
+ * @line_num: line number
+ * @fd: file pointer
+ * @buffer: buffer where the read line is stored
+ */
 void handler(char **tks, int line_num, FILE *fd, char *buffer)
 {
 	if (strcmp(tks[0], "push") == 0)

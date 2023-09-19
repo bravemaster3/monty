@@ -76,7 +76,7 @@ void free_2D(char **grd, int n_rows)
 /**
  * free_stack - frees stack before exiting
  */
-void free_stack()
+void free_stack(void)
 {
 	stack_t *ptr, *tmp;
 

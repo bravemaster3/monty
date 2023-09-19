@@ -23,7 +23,7 @@ void push_fun(int n)
  * pall_fun - prints all integers of the stack
  * Return: No return
  */
-void pall_fun()
+void pall_fun(void)
 {
 	stack_t *current = top;
 
