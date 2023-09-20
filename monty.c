@@ -4,6 +4,10 @@ instruction_t all_ops[] = {
 	{"push", push_fun},
 	{"pall", pall_fun},
 	{"add", add_fun},
+	{"swap", swap_fun},
+	{"pint", pint_fun},
+	{"pop", pop_fun},
+	{"nop", nop_fun},
 	{NULL, NULL}};
 
 /**
