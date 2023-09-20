@@ -64,10 +64,9 @@ void handler(stack_t **top, instruction_t *instr, int lnum, FILE *fp)
 	if (cmd == NULL)
 	{
 		errno = -998;
-		command_found = -2;
 		free(cpy_instr);
 	}
-	if (command_found == 0)
+	else
 	{
 		while (all_ops[i].opcode != NULL)
 		{
@@ -80,12 +79,12 @@ void handler(stack_t **top, instruction_t *instr, int lnum, FILE *fp)
 			}
 			i++;
 		}
-	}
-	if (command_found == 0)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", lnum, cpy_instr);
-		errno = -999;
-		free(cpy_instr);
-		free_and_exit(*top, fp, instr);
+		if (command_found == 0)
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, cpy_instr);
+			errno = -999;
+			free(cpy_instr);
+			free_and_exit(*top, fp, instr);
+		}
 	}
 }
