@@ -17,6 +17,8 @@ void push_fun(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
+	if (stack == NULL)
+		return;
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
@@ -41,41 +43,19 @@ void push_fun(stack_t **stack, unsigned int line_number)
  */
 void pall_fun(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current = *stack;
+	stack_t *current;
 
 	(void)line_number;
-	if (current != NULL)
-	{
-		while (current)
-		{
-			printf("%d\n", current->n);
-			current = current->next;
-		}
-	}
-}
-
-/**
- * add_fun - adds the top two elements of the stack
- * @stack: pointer to top (pointer to pointer)
- * @line_number: liner number in the file
- * Return: No return
- */
-void add_fun(stack_t **stack, unsigned int line_number)
-{
-	stack_t *curr = *stack;
-	int second = 0;
-
-	if (stack_len(*stack) < 2)
-	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-		errno = -999;
+	if (stack == NULL || *stack == NULL)
 		return;
+
+	current = *stack;
+
+	while (current)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
 	}
-	curr = curr->next;
-	second = curr->n;
-	curr = curr->prev;
-	curr->n = curr->n + second;
-	del_at_indx(stack, 1);
 }
 
 /**
@@ -125,5 +105,32 @@ void pop_fun(stack_t **stack, unsigned int line_number)
 		}
 		(*stack) = (*stack)->next;
 		free(current);
+	}
+}
+
+/**
+ * swap_fun - remove top element of the stack
+ * @stack: pointer to top (pointer to pointer)
+ * @line_number: liner number in the file
+ * Return: No return value
+ */
+
+void swap_fun(stack_t **stack, unsigned int line_number)
+{
+	stack_t *current;
+
+	if (stack == NULL || *stack == NULL || stack_len(*stack) < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		errno = -999;
+	}
+	else
+	{
+		current = (*stack)->next;
+		(*stack)->prev = current;
+		(*stack)->next = current->next;
+		current->prev = NULL;
+		current->next = *stack;
+		*stack = current;
 	}
 }
