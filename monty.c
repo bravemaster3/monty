@@ -62,6 +62,36 @@ void handler(char **tks, int line_num, FILE *fp, char *buffer)
 	}
 	else if (strcmp(tks[0], "pall") == 0)
 		pall_fun();
+	else if (strcmp(tks[0], "pint") == 0)
+	{
+		if (top == NULL)
+		{
+			fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
+			free_and_exit(fp, buffer, tks);
+		}
+		else
+			pint_fun();
+	}
+	else if (strcmp(tks[0], "pop") == 0)
+	{
+		if (top == NULL)
+		{
+			fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+			free_and_exit(fp, buffer, tks);
+		}
+		else
+			pop_fun();
+	}
+	else if (strcmp(tks[0], "swap") == 0)
+	{
+		if (stack_len() < 2)
+		{
+			fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+			free_and_exit(fp, buffer, tks);
+		}
+		else
+			swap_fun();
+	}
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, buffer);
@@ -69,17 +99,17 @@ void handler(char **tks, int line_num, FILE *fp, char *buffer)
 	}
 }
 
-/**
- * free_and_exit - frees allocd spaces and exits with EXITFAILURE
- * @tks: tokenized line
- * @fp: file pointer
- * @buffer: buffer where the read line is stored
- */
-void free_and_exit(FILE *fp, char *buffer, char **tks)
-{
-	fclose(fp);
-	free(buffer);
-	free_stack();
-	free_2D(tks, ntok(tks));
-	exit(EXIT_FAILURE);
-}
+	/**
+	 * free_and_exit - frees allocd spaces and exits with EXITFAILURE
+	 * @tks: tokenized line
+	 * @fp: file pointer
+	 * @buffer: buffer where the read line is stored
+	 */
+	void free_and_exit(FILE *fp, char *buffer, char **tks)
+	{
+		fclose(fp);
+		free(buffer);
+		free_stack();
+		free_2D(tks, ntok(tks));
+		exit(EXIT_FAILURE);
+	}

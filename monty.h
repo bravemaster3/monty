@@ -41,6 +41,10 @@ extern stack_t *top;
 
 void push_fun(int n);
 void pall_fun(void);
+void pint_fun();
+void pop_fun();
+int stack_len();
+void swap_fun();
 
 char **line_split(char *buff, char *delim);
 int ntok(char **toks);
