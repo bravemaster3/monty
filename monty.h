@@ -46,6 +46,7 @@ char **line_split(char *buff, char *delim);
 int ntok(char **toks);
 void free_2D(char **grd, int n_rows);
 void free_stack(void);
-void handler(char **tks, int line_num, FILE *fd, char *buffer);
+void free_and_exit(FILE *fp, char *buffer, char **tks);
+void handler(char **tks, int line_num, FILE *fp, char *buffer);
 
 #endif /* MONTY_H */
