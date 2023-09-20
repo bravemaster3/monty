@@ -11,7 +11,7 @@ stack_t *top = NULL;
 
 int main(int argc, char *argv[])
 {
-	FILE *fd;
+	FILE *fp;
 	char *buffer = NULL, **tks = NULL;
 	size_t size = 0;
 	ssize_t nchar = 0;
@@ -22,20 +22,20 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = fopen(argv[1], "r");
-	if (fd == NULL)
+	fp = fopen(argv[1], "r");
+	if (fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while ((nchar = getline(&buffer, &size, fd)) != -1)
+	while ((nchar = getline(&buffer, &size, fp)) != -1)
 	{
 		tks = line_split(buffer, " \n");
-		handler(tks, line_num, fd, buffer);
+		handler(tks, line_num, fp, buffer);
 		line_num++;
 		free_2D(tks, ntok(tks));
 	}
-	fclose(fd);
+	fclose(fp);
 	free(buffer);
 	free_stack();
 	return (EXIT_SUCCESS);
@@ -45,21 +45,17 @@ int main(int argc, char *argv[])
  * handler - handles the different commands
  * @tks: tokenized line
  * @line_num: line number
- * @fd: file pointer
+ * @fp: file pointer
  * @buffer: buffer where the read line is stored
  */
-void handler(char **tks, int line_num, FILE *fd, char *buffer)
+void handler(char **tks, int line_num, FILE *fp, char *buffer)
 {
 	if (strcmp(tks[0], "push") == 0)
 	{
 		if (ntok(tks) < 2 || (atoi(tks[1]) == 0 && strcmp(tks[1], "0")))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_num);
-			fclose(fd);
-			free(buffer);
-			free_stack();
-			free_2D(tks, ntok(tks));
-			exit(EXIT_FAILURE);
+			free_and_exit(fp, buffer, tks);
 		}
 		else
 			push_fun(atoi(tks[1]));
@@ -68,5 +64,22 @@ void handler(char **tks, int line_num, FILE *fd, char *buffer)
 		pall_fun();
 	else
 	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, buffer);
+		free_and_exit(fp, buffer, tks);
 	}
+}
+
+/**
+ * free_and_exit - frees allocd spaces and exits with EXITFAILURE
+ * @tks: tokenized line
+ * @fp: file pointer
+ * @buffer: buffer where the read line is stored
+ */
+void free_and_exit(FILE *fp, char *buffer, char **tks)
+{
+	fclose(fp);
+	free(buffer);
+	free_stack();
+	free_2D(tks, ntok(tks));
+	exit(EXIT_FAILURE);
 }
