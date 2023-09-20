@@ -1,82 +1,31 @@
 #include "monty.h"
-/**
- * line_split - tokenizes a buffer
- * @buff: the buffer
- * @delim: the delimiter
- *
- * Return: a pointer to the array of tokens...
- */
-char **line_split(char *buff, char *delim)
-{
-	char *buff_cpy, *token, **tokens;
-	int n_tok, counter;
-
-	buff_cpy = strdup(buff);
-	token = strtok(buff_cpy, delim);
-	if (token == NULL)
-	{
-		free(buff_cpy);
-		return (NULL);
-	}
-	n_tok = 1;
-	while ((token = strtok(NULL, delim)))
-		n_tok++;
-	free(buff_cpy);
-
-	tokens = (char **)malloc(sizeof(char *) * (n_tok + 1));
-	if (tokens == NULL)
-	{
-		perror("Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	token = strtok(buff, delim);
-	counter = 0;
-	while (token)
-	{
-		tokens[counter] = strdup(token);
-		token = strtok(NULL, delim);
-		counter++;
-	}
-	tokens[n_tok] = NULL;
-	return (tokens);
-}
 
 /**
- * ntok - counts tokens in a an array of tokens
- * @toks: pointer to the first token
- * Return: number of tokens in toks...
+ * is_valid_integer - checks if a string is a valid int
+ * @str: the pointer to the string
+ * Return: 1 if an integer, 0 otherwise
  */
-
-int ntok(char **toks)
+int is_valid_integer(char *str)
 {
-	int n_toks = 0;
-
-	if (toks == NULL)
+	if (str == NULL || *str == '\0')
 		return (0);
-	while (toks[n_toks])
-		n_toks++;
-	return (n_toks);
-}
+	if (*str == '+' || *str == '-')
+		str++;
+	while (*str != '\0')
+	{
+		if (!isdigit(*str))
+			return (0);
+		str++;
+	}
 
-/**
- * free_2D - frees malloced space for array of tokens
- * @grd:: pointer to first token
- * @n_rows: height of the grid
- */
-
-void free_2D(char **grd, int n_rows)
-{
-	int row = 0;
-
-	for (; row < n_rows; row++)
-		free(grd[row]);
-	free(grd);
+	return (1);
 }
 
 /**
  * free_stack - frees stack before exiting
+ * @top: pointer to the top of the stack
  */
-void free_stack(void)
+void free_stack(stack_t *top)
 {
 	stack_t *ptr, *tmp;
 
@@ -90,4 +39,75 @@ void free_stack(void)
 			free(tmp);
 		}
 	}
+}
+
+/**
+ * stack_len - counts number of elements in stack
+ * @top: pointer to the top of the stack
+ * Return: the length
+ */
+int stack_len(stack_t *top)
+{
+	int len = 0;
+	stack_t *curr = top;
+
+	if (top == NULL)
+		return (0);
+
+	while (curr != NULL)
+	{
+		len++;
+		curr = curr->next;
+	}
+
+	return (len);
+}
+
+/**
+ * del_at_indx - deletes a node at index
+ * @top: pointer to the head pointer
+ * @index: index where the node should be removed
+ * Return: 1 on success, -1 otherwise
+ */
+int del_at_indx(stack_t **top, unsigned int index)
+{
+	stack_t *ptr;
+	unsigned int i = 0;
+
+	if (top == NULL || *top == NULL)
+		return (-1);
+
+	if (index == 0)
+	{
+		ptr = (*top);
+		if ((*top)->next)
+		{
+			(*top)->next->prev = NULL;
+			(*top) = (*top)->next;
+			free(ptr);
+		}
+		else
+		{
+			*top = NULL;
+			free(ptr);
+		}
+		return (1);
+	}
+	ptr = *top;
+	while (ptr)
+	{
+		if (i == index)
+		{
+
+			ptr->prev->next = ptr->next;
+			if (ptr->next)
+				ptr->next->prev = ptr->prev;
+
+			free(ptr);
+			return (1);
+		}
+		i++;
+		ptr = ptr->next;
+	}
+	return (-1);
 }

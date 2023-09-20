@@ -1,1 +1,4 @@
 .vscode
+TEST_SUITE
+run_check.sh
+DELETE
