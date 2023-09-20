@@ -8,6 +8,10 @@ instruction_t all_ops[] = {
 	{"pint", pint_fun},
 	{"pop", pop_fun},
 	{"nop", nop_fun},
+	{"sub", sub_fun},
+	{"mul", mul_fun},
+	{"div", div_fun},
+	{"mod", mod_fun},
 	{NULL, NULL}};
 
 /**
@@ -70,6 +74,8 @@ void handler(stack_t **top, instruction_t *instr, int lnum, FILE *fp)
 		errno = -998;
 		free(cpy_instr);
 	}
+	else if (*cmd == '#')
+		free(cpy_instr);
 	else
 	{
 		while (all_ops[i].opcode != NULL)
