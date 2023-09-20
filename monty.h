@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <string.h>
+#include <ctype.h>
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,16 +39,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *top;
+extern instruction_t all_ops[];
 
-void push_fun(int n);
-void pall_fun(void);
+void push_fun(stack_t **stack, unsigned int line_number);
+void pall_fun(stack_t **stack, unsigned int line_number);
+void add_fun(stack_t **stack, unsigned int line_number);
 
-char **line_split(char *buff, char *delim);
-int ntok(char **toks);
-void free_2D(char **grd, int n_rows);
-void free_stack(void);
-void free_and_exit(FILE *fp, char *buffer, char **tks);
-void handler(char **tks, int line_num, FILE *fp, char *buffer);
+/*char **line_split(char *buff, char *delim);*/
+/*int ntok(char **toks);*/
+/*void free_2D(char **grd, int n_rows);*/
+void free_stack(stack_t *top);
+void free_and_exit(stack_t *top, FILE *fp, instruction_t *instr);
+int is_valid_integer(char *str);
+void handler(stack_t **top, instruction_t *instr, int lnum, FILE *fp);
+int stack_len(stack_t *top);
+int del_at_indx(stack_t **top, unsigned int index);
 
 #endif /* MONTY_H */
