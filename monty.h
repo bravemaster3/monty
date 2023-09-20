@@ -44,6 +44,10 @@ extern instruction_t all_ops[];
 void push_fun(stack_t **stack, unsigned int line_number);
 void pall_fun(stack_t **stack, unsigned int line_number);
 void add_fun(stack_t **stack, unsigned int line_number);
+void swap_fun(stack_t **stack, unsigned int line_number);
+void pint_fun(stack_t **stack, unsigned int line_number);
+void pop_fun(stack_t **stack, unsigned int line_number);
+void nop_fun(stack_t **stack, unsigned int line_number);
 
 /*char **line_split(char *buff, char *delim);*/
 /*int ntok(char **toks);*/
