@@ -23,12 +23,14 @@ pall$
 gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 ```
 ## Opcodes handled
-* swap
-* pop
-* nop
-* add
-* pint
-* pall
-* push
+* push: Add element to stack
+* pop: Remove element from stack
+* nop: Do nothing in the stack
+* add: Add first two element of the stack, push the result to top
+* pint: Print top elemets of the stack
+* pall: Print all elements of the stack
+* swap: Swap first two elements of the stack
+* sub: Subtract the first two element of stack
+ 
 ### More to come
 
