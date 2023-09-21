@@ -9,7 +9,7 @@ int is_valid_integer(char *str)
 {
 	if (str == NULL || *str == '\0')
 		return (0);
-	if (*str == '+' || *str == '-')
+	if (*str == '-')
 		str++;
 	while (*str != '\0')
 	{
