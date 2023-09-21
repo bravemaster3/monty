@@ -1,4 +1,4 @@
-push 1
-push 2
-scx test
-pall koffi
+pall -20
+push -20
+push lslkss
+pall

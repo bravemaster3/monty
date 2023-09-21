@@ -16,6 +16,8 @@ instruction_t all_ops[] = {
 	{"pstr", pstr_fun},
 	{"rotl", rotl_fun},
 	{"rotr", rotr_fun},
+	{"queue", queue_fun},
+	{"stack", stack_fun},
 	{NULL, NULL}};
 
 /**

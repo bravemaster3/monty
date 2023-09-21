@@ -56,6 +56,9 @@ void pchar_fun(stack_t **stack, unsigned int line_number);
 void pstr_fun(stack_t **stack, unsigned int line_number);
 void rotl_fun(stack_t **stack, unsigned int line_number);
 void rotr_fun(stack_t **stack, unsigned int line_number);
+void stack_fun(stack_t **stack, unsigned int line_number);
+void queue_fun(stack_t **stack, unsigned int line_number);
+void push_queue_fun(stack_t **stack, unsigned int line_number);
 
 /*char **line_split(char *buff, char *delim);*/
 /*int ntok(char **toks);*/
