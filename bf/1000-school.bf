@@ -5,8 +5,8 @@
 
 
 #printing S
-> cell #0 set to 0
-++++ ++++ cell #1 set to 8
+cell #0 set to 0
+>++++ ++++ cell #1 set to 8
 [
     < +++++ +++++
     > -
