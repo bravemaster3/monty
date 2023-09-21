@@ -35,3 +35,5 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 * mul: Multiply first two element of the stack, push the result to top
 ### More to come
 
+> [!WARNING]
+> Use this monty program without guarantee!
