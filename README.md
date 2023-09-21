@@ -33,6 +33,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 * sub: Subtract the first two element of stack, push the result to the top
 * div: Divide first two element of the stack, push the result to top
 * mul: Multiply first two element of the stack, push the result to top
+* pchar: Print character at the top of stack
 ### More to come
 
 > [!WARNING]
