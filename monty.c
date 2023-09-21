@@ -101,7 +101,7 @@ void handler(stack_t **top, instruction_t *instr, int lnum, FILE *fp)
 		}
 		if (command_found == 0)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", lnum, cpy_instr);
+			fprintf(stderr, "L%d: unknown instruction %s", lnum, cpy_instr);
 			errno = -999;
 			free(cpy_instr);
 			free_and_exit(*top, fp, instr);

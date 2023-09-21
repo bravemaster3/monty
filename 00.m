@@ -1,3 +1,4 @@
 push 1
-push 2-2
-pall
+push 2
+scx test
+pall koffi
