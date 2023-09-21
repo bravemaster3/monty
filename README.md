@@ -35,6 +35,8 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 * mul: Multiply first two element of the stack, push the result to top
 * pchar: Print character at the top of stack
 * pstr: prints the string starting at the top of the stack
+* rotl: rotates the stack to the top
+
 ### More to come
 
 > [!WARNING]
