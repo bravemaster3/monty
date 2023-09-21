@@ -35,8 +35,9 @@
 ]                        Loop
 
 
-<[.<]                    Print backwards
+
+<.<.                    Print the 2 digits
 
 
 [-]
-+++++ +++++.
+++++++++++.
