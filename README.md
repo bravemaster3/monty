@@ -30,7 +30,8 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 * pint: Print top elemets of the stack
 * pall: Print all elements of the stack
 * swap: Swap first two elements of the stack
-* sub: Subtract the first two element of stack
- 
+* sub: Subtract the first two element of stack, push the result to the top
+* div: Divide first two element of the stack, push the result to top
+* mul: Multiply first two element of the stack, push the result to top
 ### More to come
 
