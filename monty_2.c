@@ -13,6 +13,6 @@ void free_and_exit(stack_t *top, FILE *fp, instruction_t *instr)
 		free(instr->opcode);
 		free(instr);
 		free_stack(top);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 }
