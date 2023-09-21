@@ -6,7 +6,6 @@
 +++ +++
 [<---- ---- > -]#subtracts 8 6 times = 48
 
-
 #DOING THE MULTIPLICATION
 <<
 [
@@ -34,7 +33,10 @@
   >>>>[-<<<<+>>>>]       Put quotient at new X location
   <[-]<<<                Reset cells
 ]                        Loop
+
+
 <[.<]                    Print backwards
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+[-]
 +++++ +++++.
