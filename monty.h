@@ -52,6 +52,10 @@ void sub_fun(stack_t **stack, unsigned int line_number);
 void mul_fun(stack_t **stack, unsigned int line_number);
 void div_fun(stack_t **stack, unsigned int line_number);
 void mod_fun(stack_t **stack, unsigned int line_number);
+void pchar_fun(stack_t **stack, unsigned int line_number);
+void pstr_fun(stack_t **stack, unsigned int line_number);
+void rotl_fun(stack_t **stack, unsigned int line_number);
+void rotr_fun(stack_t **stack, unsigned int line_number);
 
 /*char **line_split(char *buff, char *delim);*/
 /*int ntok(char **toks);*/
