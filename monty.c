@@ -46,6 +46,12 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	instr = malloc(sizeof(instruction_t));
+	if (instr == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		fclose(fp);
+		exit(EXIT_FAILURE);
+	}
 	instr->opcode = NULL;
 	while ((nchar = getline(&(instr->opcode), &size, fp)) != -1)
 	{
