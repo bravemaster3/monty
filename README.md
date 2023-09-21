@@ -22,6 +22,7 @@ pall$
 ```bash
 gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 ```
+## All  files will be compiled on Ubuntu 20.04 LTS
 ## Opcodes handled
 * push: Add element to stack
 * pop: Remove element from stack
@@ -37,6 +38,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 * pstr: prints the string starting at the top of the stack
 * rotl: Rotates the stack to the top
 * rotr: Rotates the stack to the bottom
+
 ### More to come
 
 > [!WARNING]
