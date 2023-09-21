@@ -12,6 +12,10 @@ instruction_t all_ops[] = {
 	{"mul", mul_fun},
 	{"div", div_fun},
 	{"mod", mod_fun},
+	{"pchar", pchar_fun},
+	{"pstr", pstr_fun},
+	{"rotl", rotl_fun},
+	{"rotr", rotr_fun},
 	{NULL, NULL}};
 
 /**
