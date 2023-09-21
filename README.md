@@ -1,4 +1,4 @@
-# Monty Project
+# The Monty Project
 
 This is how the project was compiled
 
